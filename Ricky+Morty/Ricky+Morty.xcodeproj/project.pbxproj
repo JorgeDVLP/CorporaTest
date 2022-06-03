@@ -22,6 +22,8 @@
 		3B779D0E284A0FC2004CC9CA /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D0D284A0FC2004CC9CA /* CharacterListViewModel.swift */; };
 		3B779D13284A1B4C004CC9CA /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D11284A1B4C004CC9CA /* CharacterCollectionViewCell.swift */; };
 		3B779D14284A1B4C004CC9CA /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B779D12284A1B4C004CC9CA /* CharacterCollectionViewCell.xib */; };
+		3B779D16284A1DBF004CC9CA /* CustomUIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D15284A1DBF004CC9CA /* CustomUIVIew.swift */; };
+		3B779D18284A1DF9004CC9CA /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D17284A1DF9004CC9CA /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		3B779D0D284A0FC2004CC9CA /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		3B779D11284A1B4C004CC9CA /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B779D12284A1B4C004CC9CA /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
+		3B779D15284A1DBF004CC9CA /* CustomUIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIVIew.swift; sourceTree = "<group>"; };
+		3B779D17284A1DF9004CC9CA /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				3B779CFE2849FBC8004CC9CA /* StoryBoarded.swift */,
+				3B779D15284A1DBF004CC9CA /* CustomUIVIew.swift */,
+				3B779D17284A1DF9004CC9CA /* CustomImageView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -243,12 +249,14 @@
 				3B779D06284A0305004CC9CA /* Character.swift in Sources */,
 				3B779D0C284A085C004CC9CA /* APIManager.swift in Sources */,
 				3B779CEB2849F965004CC9CA /* CharacterListViewController.swift in Sources */,
+				3B779D16284A1DBF004CC9CA /* CustomUIVIew.swift in Sources */,
 				3B779CFC2849FB49004CC9CA /* Coordinator.swift in Sources */,
 				3B779CE72849F965004CC9CA /* AppDelegate.swift in Sources */,
 				3B779D0A284A03DE004CC9CA /* CharacterResponse.swift in Sources */,
 				3B779D0E284A0FC2004CC9CA /* CharacterListViewModel.swift in Sources */,
 				3B779D13284A1B4C004CC9CA /* CharacterCollectionViewCell.swift in Sources */,
 				3B779CE92849F965004CC9CA /* SceneDelegate.swift in Sources */,
+				3B779D18284A1DF9004CC9CA /* CustomImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
