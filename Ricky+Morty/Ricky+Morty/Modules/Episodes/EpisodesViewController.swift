@@ -51,7 +51,7 @@ extension EpisodesViewController: UITableViewDelegate {
         }
         let item = self.viewModel.getItem(forIndex: indexPath)
         cell.title.text = item.name
-        cell.date.text = item.date
+        cell.date.text = item.localizedDate
         
         return cell
     }
