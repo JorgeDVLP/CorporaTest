@@ -32,15 +32,15 @@ class CharacterListViewController: UIViewController, StoryBoarded {
     }
     
     private func bindView() {
-        self.viewModel.onDataFetched = { count in
-            self.collectionView.reloadData()
+        self.viewModel.onDataFetched = { [weak self] count in
+            self?.collectionView.reloadData()
             if count > 0 {
-                self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                self?.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             }
         }
         
-        self.viewModel.onDataAdded = { rows in
-            self.collectionView.performBatchUpdates { [weak self] in
+        self.viewModel.onDataAdded = { [weak self] rows in
+            self?.collectionView.performBatchUpdates { [weak self] in
                 self?.collectionView.insertItems(at: rows)
             }
         }

@@ -20,4 +20,5 @@ struct Character {
     let origin: String
     let status: CharacterStatus
     let imageURL: String
+    let episodes: [String]
 }

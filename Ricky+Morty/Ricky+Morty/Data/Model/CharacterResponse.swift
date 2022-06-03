@@ -17,6 +17,7 @@ struct CharacterResult: Decodable {
     let status: String
     let origin: Origin
     let image: String
+    let episode: [String]
 }
 
 struct Origin: Decodable {
@@ -37,7 +38,7 @@ extension CharacterResult {
             status = CharacterStatus.unknown
         }
         
-        let ch = Character(id: self.id, name: self.name, origin: self.origin.name, status: status, imageURL: image)
+        let ch = Character(id: self.id, name: self.name, origin: self.origin.name, status: status, imageURL: image, episodes: episode)
         return ch
     }
 }

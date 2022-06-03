@@ -28,6 +28,7 @@
 		3B779D1D284A5EE5004CC9CA /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D1C284A5EE5004CC9CA /* ImageCache.swift */; };
 		3B779D20284A6303004CC9CA /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D1F284A6303004CC9CA /* EpisodesViewController.swift */; };
 		3B779D22284A6317004CC9CA /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D21284A6317004CC9CA /* EpisodesViewModel.swift */; };
+		3B779D24284AA8AE004CC9CA /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D23284AA8AE004CC9CA /* Episode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		3B779D1C284A5EE5004CC9CA /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		3B779D1F284A6303004CC9CA /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		3B779D21284A6317004CC9CA /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
+		3B779D23284AA8AE004CC9CA /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				3B779D05284A0305004CC9CA /* Character.swift */,
+				3B779D23284AA8AE004CC9CA /* Episode.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				3B779D06284A0305004CC9CA /* Character.swift in Sources */,
 				3B779D0C284A085C004CC9CA /* APIManager.swift in Sources */,
 				3B779CEB2849F965004CC9CA /* CharacterListViewController.swift in Sources */,
+				3B779D24284AA8AE004CC9CA /* Episode.swift in Sources */,
 				3B779D16284A1DBF004CC9CA /* CustomUIVIew.swift in Sources */,
 				3B779CFC2849FB49004CC9CA /* Coordinator.swift in Sources */,
 				3B779CE72849F965004CC9CA /* AppDelegate.swift in Sources */,
