@@ -24,6 +24,9 @@ class EpisodesViewController: UIViewController, StoryBoarded {
     func configureTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.backgroundColor = UIColor.clear
+        self.tableView.backgroundView = UIView(frame: CGRect.zero)
+        self.tableView.register(EpisodeTableViewCell.nib(), forCellReuseIdentifier: EpisodeTableViewCell.reuseIdentifier)
     }
     
     private func bindView() {
@@ -43,7 +46,19 @@ extension EpisodesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeTableViewCell.reuseIdentifier, for: indexPath) as? EpisodeTableViewCell else {
+            return UITableViewCell()
+        }
+        let item = self.viewModel.getItem(forIndex: indexPath)
+        cell.title.text = item.name
+        cell.date.text = item.date
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = self.viewModel.getSectionName(index: section)
+        return "Season \(section)"
     }
 }
 

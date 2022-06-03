@@ -29,6 +29,8 @@
 		3B779D20284A6303004CC9CA /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D1F284A6303004CC9CA /* EpisodesViewController.swift */; };
 		3B779D22284A6317004CC9CA /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D21284A6317004CC9CA /* EpisodesViewModel.swift */; };
 		3B779D24284AA8AE004CC9CA /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D23284AA8AE004CC9CA /* Episode.swift */; };
+		3B779D27284AB6D5004CC9CA /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D25284AB6D5004CC9CA /* EpisodeTableViewCell.swift */; };
+		3B779D28284AB6D5004CC9CA /* EpisodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B779D26284AB6D5004CC9CA /* EpisodeTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		3B779D1F284A6303004CC9CA /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		3B779D21284A6317004CC9CA /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
 		3B779D23284AA8AE004CC9CA /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		3B779D25284AB6D5004CC9CA /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
+		3B779D26284AB6D5004CC9CA /* EpisodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,8 @@
 			children = (
 				3B779D11284A1B4C004CC9CA /* CharacterCollectionViewCell.swift */,
 				3B779D12284A1B4C004CC9CA /* CharacterCollectionViewCell.xib */,
+				3B779D25284AB6D5004CC9CA /* EpisodeTableViewCell.swift */,
+				3B779D26284AB6D5004CC9CA /* EpisodeTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 				3B779D14284A1B4C004CC9CA /* CharacterCollectionViewCell.xib in Resources */,
 				3B779CF32849F969004CC9CA /* LaunchScreen.storyboard in Resources */,
 				3B779CF02849F969004CC9CA /* Assets.xcassets in Resources */,
+				3B779D28284AB6D5004CC9CA /* EpisodeTableViewCell.xib in Resources */,
 				3B779CEE2849F965004CC9CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +293,7 @@
 				3B779D16284A1DBF004CC9CA /* CustomUIVIew.swift in Sources */,
 				3B779CFC2849FB49004CC9CA /* Coordinator.swift in Sources */,
 				3B779CE72849F965004CC9CA /* AppDelegate.swift in Sources */,
+				3B779D27284AB6D5004CC9CA /* EpisodeTableViewCell.swift in Sources */,
 				3B779D0A284A03DE004CC9CA /* CharacterResponse.swift in Sources */,
 				3B779D22284A6317004CC9CA /* EpisodesViewModel.swift in Sources */,
 				3B779D0E284A0FC2004CC9CA /* CharacterListViewModel.swift in Sources */,

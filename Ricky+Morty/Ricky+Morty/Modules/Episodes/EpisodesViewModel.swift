@@ -89,7 +89,11 @@ final class EpisodesViewModel {
         return seasons[section].episodes.count
     }
     
+    func getSectionName(index: Int) -> String {
+        return seasons[index].season
+    }
+    
     func getItem(forIndex index: IndexPath) -> Episode {
-        return self.seasons[index.row].episodes[index.row]
+        return self.seasons[index.section].episodes[index.row]
     }
 }
