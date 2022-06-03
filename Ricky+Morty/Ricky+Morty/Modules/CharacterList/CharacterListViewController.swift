@@ -22,6 +22,8 @@ class CharacterListViewController: UIViewController, StoryBoarded {
     
     private func configureCollectionView() {
         self.collectionView.register(CharacterCollectionViewCell.nib(), forCellWithReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier)
+        self.collectionView.backgroundColor = UIColor.clear
+        self.collectionView.backgroundView = UIView(frame: CGRect.zero)
         self.collectionView.dataSource = self
     }
     
@@ -46,7 +48,19 @@ extension CharacterListViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let item = viewModel.getItem(forIndex: indexPath)
-        cell.titleLabel.text = item.name
+        cell.nameLabel.text = item.name
+        cell.statusLabel.text = item.status.rawValue
+        cell.originLabel.text = item.origin
+        
+        switch item.status {
+        case .alive:
+            cell.statusLabel.textColor = UIColor(named: "GreenColor")
+        case .dead:
+            cell.statusLabel.textColor = UIColor.red
+        case .unknown:
+            cell.statusLabel.textColor = UIColor.gray
+        }
+        
         return cell
     }
 }

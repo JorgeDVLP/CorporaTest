@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum CharacterStatus {
-    case alive
-    case dead
-    case unknown
+enum CharacterStatus: String {
+    case alive = "Alive"
+    case dead = "Dead"
+    case unknown = "Unknown"
 }
 
 // una imagen circular del personaje, su nombre, su planeta de origen y su status actual (vivo, muerto o desconocido).
