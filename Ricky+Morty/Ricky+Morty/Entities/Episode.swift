@@ -13,6 +13,11 @@ struct Episode: Decodable {
     let date: String
     let episode: String
     
+    var season: String {
+        let substring = episode.prefix(3)
+        return String(substring)
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"

@@ -13,12 +13,18 @@
 
 import Foundation
 
+fileprivate struct Season {
+    let season: String
+    let episodes: [Episode]
+}
+
 final class EpisodesViewModel {
     
     private let characterService: CharacterService
     private let character: Character
     private let dispatchGroup: DispatchGroup = DispatchGroup()
     private var episodes: [Episode] = []
+    private var seasons: [Season] = []
     
     var title: String {
         return character.name
@@ -38,12 +44,26 @@ final class EpisodesViewModel {
             fetchEpisode(url: url)
         }
         
-        dispatchGroup.notify(queue: .main) {
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
             print("All episodes fetched", self.episodes.count)
             self.episodes = self.episodes.sorted(by: { $0.episode < $1.episode })
-            dump(self.episodes)
+            self.seasons = self.mapToSeasons(self.episodes)
+            print("Number of seasons", self.seasons.count)
             self.onDataFetched?()
         }
+    }
+    
+    private func mapToSeasons(_ list: [Episode]) -> [Season] {
+        var map: [String: [Episode]] = [:]
+        
+        for episode in list {
+            var list = map[episode.season] ?? []
+            list.append(episode)
+            map[episode.season] = list
+        }
+        
+        return map.map { Season(season: $0.key, episodes: $0.value) }.sorted(by: { $0.season < $1.season })
     }
     
     private func fetchEpisode(url: String) {
@@ -62,14 +82,14 @@ final class EpisodesViewModel {
     }
     
     func numberOfSections() -> Int {
-        return 1
+        return seasons.count
     }
     
     func numberOfItems(forSection section: Int) -> Int {
-        return self.episodes.count
+        return seasons[section].episodes.count
     }
     
     func getItem(forIndex index: IndexPath) -> Episode {
-        return self.episodes[index.row]
+        return self.seasons[index.row].episodes[index.row]
     }
 }
