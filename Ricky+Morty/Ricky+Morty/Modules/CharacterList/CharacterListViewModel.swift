@@ -19,7 +19,6 @@ final class CharacterListViewModel {
     private let characterService: CharacterService
     private var currentPage: Int = 1
     private var isFetching: Bool = false
-    private var initialFetch: Bool = true
     private var currentFilter: FilterType = .all
     private var characters: [Character] = []
     
