@@ -16,7 +16,7 @@ enum APIError: Error {
 }
 
 protocol CharacterService {
-    func getCharacters(page: Int, completion: @escaping (_ result: Result<[Character], APIError>) -> Void)
+    func getCharacters(page: Int, status: String?, completion: @escaping (_ result: Result<[Character], APIError>) -> Void)
 }
 
 final class APIManager: CharacterService {
@@ -25,16 +25,20 @@ final class APIManager: CharacterService {
     
     private init() {}
     
-    func getCharacters(page: Int, completion: @escaping (_ result: Result<[Character], APIError>) -> Void) {
+    func getCharacters(page: Int, status: String?, completion: @escaping (_ result: Result<[Character], APIError>) -> Void) {
                 
         var urlComponents: URLComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "rickandmortyapi.com"
         urlComponents.path = "/api/character"
         
-        let queryItems: [URLQueryItem] = [
+        var queryItems: [URLQueryItem] = [
             URLQueryItem(name: "page", value: "\(page)")
         ]
+        
+        if let status = status {
+            queryItems.append(URLQueryItem(name: "status", value: status))
+        }
         
         urlComponents.queryItems = queryItems
         

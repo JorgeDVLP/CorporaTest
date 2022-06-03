@@ -10,6 +10,7 @@ import UIKit
 class CharacterListViewController: UIViewController, StoryBoarded {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var filterControl: UISegmentedControl!
     
     weak var eventDelegate: CharacterListEventDelegate?
     var viewModel: CharacterListViewModel!
@@ -31,8 +32,11 @@ class CharacterListViewController: UIViewController, StoryBoarded {
     }
     
     private func bindView() {
-        self.viewModel.onDataFetched = {
+        self.viewModel.onDataFetched = { count in
             self.collectionView.reloadData()
+            if count > 0 {
+                self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            }
         }
         
         self.viewModel.onDataAdded = { rows in
@@ -40,6 +44,10 @@ class CharacterListViewController: UIViewController, StoryBoarded {
                 self?.collectionView.insertItems(at: rows)
             }
         }
+    }
+    
+    @IBAction func onFilterChanged() {
+        self.viewModel.onFilterChanged(index: self.filterControl.selectedSegmentIndex)
     }
 }
 

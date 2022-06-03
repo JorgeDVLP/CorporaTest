@@ -7,16 +7,30 @@
 
 import Foundation
 
+fileprivate enum FilterType: String {
+    case all
+    case alive
+    case dead
+    case unknown
+}
+
 final class CharacterListViewModel {
     
     private let characterService: CharacterService
     private var currentPage: Int = 1
     private var isFetching: Bool = false
     private var initialFetch: Bool = true
-    
+    private var currentFilter: FilterType = .all
     private var characters: [Character] = []
     
-    var onDataFetched: (() -> Void)?
+    private var statusValue: String? {
+        guard currentFilter != .all else {
+            return nil
+        }
+        return currentFilter.rawValue
+    }
+    
+    var onDataFetched: ((_ size: Int) -> Void)?
     
     var onDataAdded: (([IndexPath]) -> Void)?
     
@@ -28,11 +42,9 @@ final class CharacterListViewModel {
         self.currentPage = 1
         fetchCharacters { [weak self] items in
             guard let self = self else { return }
-            
-            print("Items fetched \(items.count) for page \(self.currentPage)", "Total", self.characters.count)
             DispatchQueue.main.async {
                 self.characters = items.sorted(by: { $0.id < $1.id })
-                self.onDataFetched?()
+                self.onDataFetched?(items.count)
             }
         }
     }
@@ -49,10 +61,23 @@ final class CharacterListViewModel {
         return self.characters[index.row]
     }
     
+    func onFilterChanged(index: Int) {
+        switch index {
+        case 1:
+            currentFilter = .alive
+        case 2:
+            currentFilter = .dead
+        case 3:
+            currentFilter = .unknown
+        default:
+            currentFilter = .all
+        }
+        fetchData()
+    }
+    
     private func fetchCharacters(completion: @escaping ([Character]) -> Void) {
         self.isFetching = true
-        print("Fetching characters from page", currentPage)
-        self.characterService.getCharacters(page: currentPage) { [weak self] result in
+        self.characterService.getCharacters(page: currentPage, status: statusValue) { [weak self] result in
             self?.isFetching = false
             switch result {
             case .failure(let error):
@@ -76,7 +101,6 @@ final class CharacterListViewModel {
                     newRows.append(IndexPath(row: count - i, section: 0))
                 }
                 self.onDataAdded?(newRows)
-                print("New items fetched \(items.count) for page \(self.currentPage)", "Total", self.characters.count)
             }
         }
     }
