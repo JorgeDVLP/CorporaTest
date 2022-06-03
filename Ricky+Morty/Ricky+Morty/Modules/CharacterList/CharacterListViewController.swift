@@ -26,11 +26,18 @@ class CharacterListViewController: UIViewController, StoryBoarded {
         self.collectionView.backgroundColor = UIColor.clear
         self.collectionView.backgroundView = UIView(frame: CGRect.zero)
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
     private func bindView() {
         self.viewModel.onDataFetched = {
             self.collectionView.reloadData()
+        }
+        
+        self.viewModel.onDataAdded = { rows in
+            self.collectionView.performBatchUpdates { [weak self] in
+                self?.collectionView.insertItems(at: rows)
+            }
         }
     }
 }
@@ -66,3 +73,19 @@ extension CharacterListViewController: UICollectionViewDataSource {
     }
 }
 
+extension CharacterListViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        let limit = self.collectionView.contentSize.height - 100 - scrollView.frame.size.height
+        if position > limit {
+            self.viewModel.fetchNextPage()
+        }
+    }
+}
+
+extension CharacterListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width - 16) / 2
+        return CGSize(width: width, height: 220)
+    }
+}

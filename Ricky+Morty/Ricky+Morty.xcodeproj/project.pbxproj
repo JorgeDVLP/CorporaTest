@@ -24,6 +24,7 @@
 		3B779D14284A1B4C004CC9CA /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B779D12284A1B4C004CC9CA /* CharacterCollectionViewCell.xib */; };
 		3B779D16284A1DBF004CC9CA /* CustomUIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D15284A1DBF004CC9CA /* CustomUIVIew.swift */; };
 		3B779D18284A1DF9004CC9CA /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D17284A1DF9004CC9CA /* CustomImageView.swift */; };
+		3B779D1B284A5752004CC9CA /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D1A284A5752004CC9CA /* RoundImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		3B779D12284A1B4C004CC9CA /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
 		3B779D15284A1DBF004CC9CA /* CustomUIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIVIew.swift; sourceTree = "<group>"; };
 		3B779D17284A1DF9004CC9CA /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		3B779D1A284A5752004CC9CA /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		3B779D0F284A1B34004CC9CA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				3B779D19284A5737004CC9CA /* Image */,
 				3B779D10284A1B39004CC9CA /* Cells */,
 			);
 			path = CustomViews;
@@ -170,6 +173,14 @@
 				3B779D12284A1B4C004CC9CA /* CharacterCollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		3B779D19284A5737004CC9CA /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				3B779D1A284A5752004CC9CA /* RoundImageView.swift */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 				3B779D0A284A03DE004CC9CA /* CharacterResponse.swift in Sources */,
 				3B779D0E284A0FC2004CC9CA /* CharacterListViewModel.swift in Sources */,
 				3B779D13284A1B4C004CC9CA /* CharacterCollectionViewCell.swift in Sources */,
+				3B779D1B284A5752004CC9CA /* RoundImageView.swift in Sources */,
 				3B779CE92849F965004CC9CA /* SceneDelegate.swift in Sources */,
 				3B779D18284A1DF9004CC9CA /* CustomImageView.swift in Sources */,
 			);
