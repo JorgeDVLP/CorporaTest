@@ -16,6 +16,7 @@
 		3B779CFC2849FB49004CC9CA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779CFB2849FB49004CC9CA /* Coordinator.swift */; };
 		3B779CFF2849FBC8004CC9CA /* StoryBoarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779CFE2849FBC8004CC9CA /* StoryBoarded.swift */; };
 		3B779D032849FD7D004CC9CA /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D022849FD7D004CC9CA /* MainCoordinator.swift */; };
+		3B779D06284A0305004CC9CA /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D05284A0305004CC9CA /* Character.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3B779CFB2849FB49004CC9CA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B779CFE2849FBC8004CC9CA /* StoryBoarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoarded.swift; sourceTree = "<group>"; };
 		3B779D022849FD7D004CC9CA /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		3B779D05284A0305004CC9CA /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		3B779CE52849F965004CC9CA /* Ricky+Morty */ = {
 			isa = PBXGroup;
 			children = (
+				3B779D04284A02F2004CC9CA /* Entities */,
 				3B779D002849FD3E004CC9CA /* Modules */,
 				3B779CFD2849FBAC004CC9CA /* Helpers */,
 				3B779CFA2849FB39004CC9CA /* Coordinators */,
@@ -106,6 +109,14 @@
 				3B779CEA2849F965004CC9CA /* CharacterListViewController.swift */,
 			);
 			path = CharacterList;
+			sourceTree = "<group>";
+		};
+		3B779D04284A02F2004CC9CA /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				3B779D05284A0305004CC9CA /* Character.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 			files = (
 				3B779CFF2849FBC8004CC9CA /* StoryBoarded.swift in Sources */,
 				3B779D032849FD7D004CC9CA /* MainCoordinator.swift in Sources */,
+				3B779D06284A0305004CC9CA /* Character.swift in Sources */,
 				3B779CEB2849F965004CC9CA /* CharacterListViewController.swift in Sources */,
 				3B779CFC2849FB49004CC9CA /* Coordinator.swift in Sources */,
 				3B779CE72849F965004CC9CA /* AppDelegate.swift in Sources */,
