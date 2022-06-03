@@ -15,6 +15,7 @@ class CharacterListViewController: UIViewController, StoryBoarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Characters"
         configureCollectionView()
         bindView()
         self.viewModel.fetchData()

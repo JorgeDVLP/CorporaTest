@@ -19,38 +19,38 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzM-tH-Ptc" customClass="CustomView" customModule="Ricky_Morty" customModuleProvider="target">
-                        <rect key="frame" x="16" y="17" width="279" height="220"/>
+                        <rect key="frame" x="30.5" y="37" width="250" height="180"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="dUl-0Y-ApS" customClass="CustomImageView" customModule="Ricky_Morty" customModuleProvider="target">
-                                <rect key="frame" x="16" y="60" width="100" height="100"/>
+                                <rect key="frame" x="16" y="50" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="YLT-xZ-lPN"/>
-                                    <constraint firstAttribute="height" constant="100" id="iuX-W7-Avs"/>
+                                    <constraint firstAttribute="width" secondItem="dUl-0Y-ApS" secondAttribute="height" multiplier="1:1" id="PdH-v2-WgE"/>
+                                    <constraint firstAttribute="width" constant="80" id="YLT-xZ-lPN"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="50"/>
+                                        <real key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="p4S-p5-A38">
-                                <rect key="frame" x="124" y="76.5" width="139" height="67.5"/>
+                                <rect key="frame" x="108" y="59.5" width="126" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSl-Ir-mIU">
-                                        <rect key="frame" x="0.0" y="0.0" width="139" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="126" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srd-xJ-fbP">
-                                        <rect key="frame" x="0.0" y="25.5" width="139" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="23" width="126" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Of-k1-ep0">
-                                        <rect key="frame" x="0.0" y="49.5" width="139" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="45" width="126" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -59,12 +59,12 @@
                         </subviews>
                         <color key="backgroundColor" name="CardColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="279" id="FyT-Kv-JJ0"/>
+                            <constraint firstAttribute="width" constant="250" id="FyT-Kv-JJ0"/>
                             <constraint firstAttribute="trailing" secondItem="p4S-p5-A38" secondAttribute="trailing" constant="16" id="Z0j-Ev-EW9"/>
-                            <constraint firstAttribute="height" constant="220" id="ZtN-3G-QVJ"/>
+                            <constraint firstAttribute="height" constant="180" id="ZtN-3G-QVJ"/>
                             <constraint firstItem="dUl-0Y-ApS" firstAttribute="leading" secondItem="XzM-tH-Ptc" secondAttribute="leading" constant="16" id="cFy-Lw-H6Z"/>
                             <constraint firstItem="p4S-p5-A38" firstAttribute="centerY" secondItem="dUl-0Y-ApS" secondAttribute="centerY" id="fkM-6S-qtr"/>
-                            <constraint firstItem="p4S-p5-A38" firstAttribute="leading" secondItem="dUl-0Y-ApS" secondAttribute="trailing" constant="8" id="qaB-t8-k6Y"/>
+                            <constraint firstItem="p4S-p5-A38" firstAttribute="leading" secondItem="dUl-0Y-ApS" secondAttribute="trailing" constant="12" id="qaB-t8-k6Y"/>
                             <constraint firstItem="dUl-0Y-ApS" firstAttribute="centerY" secondItem="XzM-tH-Ptc" secondAttribute="centerY" id="wgV-n5-1gv"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -72,13 +72,13 @@
                                 <real key="value" value="30"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="0.20000000000000001"/>
+                                <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOffset">
-                                <integer key="value" value="10"/>
+                                <integer key="value" value="5"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="10"/>
+                                <real key="value" value="5"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                 <color key="value" name="ShadowColor"/>
@@ -88,6 +88,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XzM-tH-Ptc" secondAttribute="bottom" constant="16" id="DxX-MK-c3T"/>
                 <constraint firstItem="XzM-tH-Ptc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="IXk-t9-CvU"/>
@@ -112,7 +113,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ShadowColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.32941176470588235" green="0.43137254901960786" blue="0.47843137254901963" alpha="0.60425728559494019" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
