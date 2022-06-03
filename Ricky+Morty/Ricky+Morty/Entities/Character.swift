@@ -9,7 +9,7 @@ import Foundation
 
 enum CharacterStatus {
     case alive
-    case death
+    case dead
     case unknown
 }
 
