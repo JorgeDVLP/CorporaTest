@@ -19,6 +19,7 @@ class MainCoordinator: Coordinator {
     // This func will take controll of the app navigation flow
     func start() {
         let vc = CharacterListViewController.instantiate()
+        vc.viewModel = CharacterListViewModel()
         navigationController.pushViewController(vc, animated: false)
     }
 }
