@@ -28,7 +28,7 @@ extension CharacterResult {
     func toCharacter() -> Character {
         var status: CharacterStatus = .unknown
         
-        switch self.status {
+        switch self.status.lowercased() {
         case "alive":
             status = CharacterStatus.alive
         case "dead":
