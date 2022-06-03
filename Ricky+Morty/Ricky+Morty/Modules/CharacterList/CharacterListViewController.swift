@@ -69,6 +69,15 @@ extension CharacterListViewController: UICollectionViewDataSource {
             cell.statusLabel.textColor = UIColor.gray
         }
         
+        let representableID = item.id
+        cell.representableID = representableID
+        
+        ImageCache.loadImage(urlString: item.imageURL) { image in
+            if cell.representableID == representableID {
+                cell.image.image = image
+            }
+        }
+        
         return cell
     }
 }

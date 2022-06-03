@@ -25,6 +25,7 @@
 		3B779D16284A1DBF004CC9CA /* CustomUIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D15284A1DBF004CC9CA /* CustomUIVIew.swift */; };
 		3B779D18284A1DF9004CC9CA /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D17284A1DF9004CC9CA /* CustomImageView.swift */; };
 		3B779D1B284A5752004CC9CA /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D1A284A5752004CC9CA /* RoundImageView.swift */; };
+		3B779D1D284A5EE5004CC9CA /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D1C284A5EE5004CC9CA /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		3B779D15284A1DBF004CC9CA /* CustomUIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIVIew.swift; sourceTree = "<group>"; };
 		3B779D17284A1DF9004CC9CA /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		3B779D1A284A5752004CC9CA /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
+		3B779D1C284A5EE5004CC9CA /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				3B779CFE2849FBC8004CC9CA /* StoryBoarded.swift */,
 				3B779D15284A1DBF004CC9CA /* CustomUIVIew.swift */,
 				3B779D17284A1DF9004CC9CA /* CustomImageView.swift */,
+				3B779D1C284A5EE5004CC9CA /* ImageCache.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B779D1D284A5EE5004CC9CA /* ImageCache.swift in Sources */,
 				3B779CFF2849FBC8004CC9CA /* StoryBoarded.swift in Sources */,
 				3B779D032849FD7D004CC9CA /* MainCoordinator.swift in Sources */,
 				3B779D06284A0305004CC9CA /* Character.swift in Sources */,

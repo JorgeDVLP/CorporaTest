@@ -16,6 +16,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var originLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     
+    var representableID: Int = 0
+    
     private lazy var placeholderImg: UIImage? = {
        return UIImage(named: "placeholder")
     }()
