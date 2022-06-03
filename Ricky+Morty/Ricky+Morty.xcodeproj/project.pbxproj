@@ -26,6 +26,8 @@
 		3B779D18284A1DF9004CC9CA /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D17284A1DF9004CC9CA /* CustomImageView.swift */; };
 		3B779D1B284A5752004CC9CA /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D1A284A5752004CC9CA /* RoundImageView.swift */; };
 		3B779D1D284A5EE5004CC9CA /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D1C284A5EE5004CC9CA /* ImageCache.swift */; };
+		3B779D20284A6303004CC9CA /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D1F284A6303004CC9CA /* EpisodesViewController.swift */; };
+		3B779D22284A6317004CC9CA /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779D21284A6317004CC9CA /* EpisodesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		3B779D17284A1DF9004CC9CA /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		3B779D1A284A5752004CC9CA /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		3B779D1C284A5EE5004CC9CA /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		3B779D1F284A6303004CC9CA /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
+		3B779D21284A6317004CC9CA /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		3B779D002849FD3E004CC9CA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3B779D1E284A62EF004CC9CA /* Episodes */,
 				3B779D012849FD4F004CC9CA /* CharacterList */,
 			);
 			path = Modules;
@@ -184,6 +189,15 @@
 				3B779D1A284A5752004CC9CA /* RoundImageView.swift */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		3B779D1E284A62EF004CC9CA /* Episodes */ = {
+			isa = PBXGroup;
+			children = (
+				3B779D1F284A6303004CC9CA /* EpisodesViewController.swift */,
+				3B779D21284A6317004CC9CA /* EpisodesViewModel.swift */,
+			);
+			path = Episodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +274,7 @@
 			files = (
 				3B779D1D284A5EE5004CC9CA /* ImageCache.swift in Sources */,
 				3B779CFF2849FBC8004CC9CA /* StoryBoarded.swift in Sources */,
+				3B779D20284A6303004CC9CA /* EpisodesViewController.swift in Sources */,
 				3B779D032849FD7D004CC9CA /* MainCoordinator.swift in Sources */,
 				3B779D06284A0305004CC9CA /* Character.swift in Sources */,
 				3B779D0C284A085C004CC9CA /* APIManager.swift in Sources */,
@@ -268,6 +283,7 @@
 				3B779CFC2849FB49004CC9CA /* Coordinator.swift in Sources */,
 				3B779CE72849F965004CC9CA /* AppDelegate.swift in Sources */,
 				3B779D0A284A03DE004CC9CA /* CharacterResponse.swift in Sources */,
+				3B779D22284A6317004CC9CA /* EpisodesViewModel.swift in Sources */,
 				3B779D0E284A0FC2004CC9CA /* CharacterListViewModel.swift in Sources */,
 				3B779D13284A1B4C004CC9CA /* CharacterCollectionViewCell.swift in Sources */,
 				3B779D1B284A5752004CC9CA /* RoundImageView.swift in Sources */,

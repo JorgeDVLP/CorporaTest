@@ -11,6 +11,7 @@ class CharacterListViewController: UIViewController, StoryBoarded {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    weak var eventDelegate: CharacterListEventDelegate?
     var viewModel: CharacterListViewModel!
     
     override func viewDidLoad() {
@@ -89,6 +90,12 @@ extension CharacterListViewController: UICollectionViewDelegate {
         if position > limit {
             self.viewModel.fetchNextPage()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = self.viewModel.getItem(forIndex: indexPath)
+        print("Selected item", item)
+        self.eventDelegate?.onCharacterSelected(item)
     }
 }
 
