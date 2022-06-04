@@ -147,9 +147,9 @@ extension CharacterListViewController: UICollectionViewDataSource {
         case .alive:
             cell.statusLabel.textColor = UIColor(named: "GreenColor")
         case .dead:
-            cell.statusLabel.textColor = UIColor.red
+            cell.statusLabel.textColor = UIColor(named: "RedColor")
         case .unknown:
-            cell.statusLabel.textColor = UIColor.gray
+            cell.statusLabel.textColor = UIColor(named: "UnknownColor")
         }
         
         let representableID = item.id
