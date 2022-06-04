@@ -15,11 +15,33 @@ class CharacterListViewController: UIViewController, StoryBoarded {
     weak var eventDelegate: CharacterListEventDelegate?
     var viewModel: CharacterListViewModel!
     
+    private let stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private let noResultsIcon: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(systemName: "info.circle")
+        img.contentMode = .scaleAspectFit
+        img.tintColor = UIColor.gray
+        return img
+    }()
+    
+    private let noResultsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No results"
+        label.textColor = UIColor.gray
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Characters"
         configureCollectionView()
         bindView()
+        configureBackgroundView()
         fetchData()
     }
     
@@ -32,11 +54,37 @@ class CharacterListViewController: UIViewController, StoryBoarded {
         self.collectionView.delegate = self
     }
     
+    private func configureBackgroundView() {
+        view.addSubview(stackView)
+        
+        NSLayoutConstraint.activate(
+            [stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+        
+        stackView.addArrangedSubview(noResultsIcon)
+        stackView.addArrangedSubview(noResultsLabel)
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.distribution = .fillProportionally
+    }
+    
+    private func showBackgroundView() {
+        stackView.isHidden = false
+    }
+    
+    private func removeBackgroundView() {
+        stackView.isHidden = true
+    }
+    
     private func bindView() {
         self.viewModel.onDataFetched = { [weak self] count in
             self?.collectionView.reloadData()
             if count > 0 {
+                self?.removeBackgroundView()
                 self?.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            } else {
+                self?.showBackgroundView()
             }
         }
         

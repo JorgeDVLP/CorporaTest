@@ -85,6 +85,7 @@ final class CharacterListViewModel {
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
+                completion([])
             case .success(let characters):
                 completion(characters)
             }
