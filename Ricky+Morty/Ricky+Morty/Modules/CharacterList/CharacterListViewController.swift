@@ -8,7 +8,7 @@
 import UIKit
 
 class CharacterListViewController: UIViewController, StoryBoarded {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filterControl: UISegmentedControl!
     
@@ -25,6 +25,7 @@ class CharacterListViewController: UIViewController, StoryBoarded {
     
     private func configureCollectionView() {
         self.collectionView.register(CharacterCollectionViewCell.nib(), forCellWithReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier)
+        self.collectionView.register(IndicatorCollectionViewCell.self, forCellWithReuseIdentifier: IndicatorCollectionViewCell.reuseIdentifier)
         self.collectionView.backgroundColor = UIColor.clear
         self.collectionView.backgroundView = UIView(frame: CGRect.zero)
         self.collectionView.dataSource = self
@@ -57,13 +58,24 @@ extension CharacterListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.numberOfItems(forSection: section)
+        let count = self.viewModel.numberOfItems(forSection: section)
+        return count > 0 ? count + 1 : count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let count = self.viewModel.numberOfItems(forSection: indexPath.section)
+        
+        if indexPath.row == count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IndicatorCollectionViewCell.reuseIdentifier, for: indexPath) as! IndicatorCollectionViewCell
+            cell.inidicator.startAnimating()
+            
+            return cell
+        }
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier, for: indexPath) as? CharacterCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
         let item = viewModel.getItem(forIndex: indexPath)
         cell.nameLabel.text = item.name
         cell.statusLabel.text = item.status.rawValue
@@ -109,7 +121,10 @@ extension CharacterListViewController: UICollectionViewDelegate {
 
 extension CharacterListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 16) / 2
-        return CGSize(width: width, height: 220)
+        let count = self.viewModel.numberOfItems(forSection: indexPath.section)
+        let indicatorCellSize = collectionView.frame.size
+        let characterCellWidth = (view.frame.width - 16) / 2
+        let size: CGSize = count == indexPath.row ? CGSize(width: indicatorCellSize.width, height: 180) : CGSize(width: characterCellWidth, height: 220)
+        return size
     }
 }
