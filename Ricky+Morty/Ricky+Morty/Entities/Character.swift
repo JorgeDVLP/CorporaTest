@@ -13,7 +13,6 @@ enum CharacterStatus: String {
     case unknown = "Unknown"
 }
 
-// una imagen circular del personaje, su nombre, su planeta de origen y su status actual (vivo, muerto o desconocido).
 struct Character {
     let id: Int
     let name: String

@@ -70,8 +70,15 @@ final class APIManager: CharacterService {
         }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-            let mappedResponse = self.handleServerResponse(type: Episode.self, data: data, response: response, error: error)
-            completion(mappedResponse)
+            let mappedResponse = self.handleServerResponse(type: EpisodeResponse.self, data: data, response: response, error: error)
+            
+            switch mappedResponse {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let json):
+                let result = json.toEpisode()
+                completion(.success(result))
+            }
         }
         .resume()
     }
