@@ -8,7 +8,7 @@
 import UIKit
 
 class EpisodesViewController: UIViewController, StoryBoarded {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: EpisodesViewModel!
@@ -32,6 +32,10 @@ class EpisodesViewController: UIViewController, StoryBoarded {
     private func bindView() {
         self.viewModel.onDataFetched = { [weak self] in
             self?.tableView.reloadData()
+        }
+        
+        self.viewModel.onShouldDisplayIndicator = { [weak self] display in
+            display == true ? self?.showActivityIndicator() : self?.removeActivityIndicator()
         }
     }
 }

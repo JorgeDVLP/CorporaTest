@@ -32,6 +32,8 @@ final class EpisodesViewModel {
     
     var onDataFetched: (() -> Void)?
     
+    var onShouldDisplayIndicator: ((Bool) -> Void)?
+    
     init(characterService: CharacterService = APIManager.shared, character: Character) {
         self.characterService = characterService
         self.character = character
@@ -40,12 +42,15 @@ final class EpisodesViewModel {
     func fetchData() {
         self.episodes.removeAll()
         
+        showIndicatorView()
+        
         for url in character.episodes {
             fetchEpisode(url: url)
         }
         
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
+            self.showIndicatorView(false)
             print("All episodes fetched", self.episodes.count)
             self.episodes = self.episodes.sorted(by: { $0.episode < $1.episode })
             self.seasons = self.mapToSeasons(self.episodes)
@@ -95,5 +100,11 @@ final class EpisodesViewModel {
     
     func getItem(forIndex index: IndexPath) -> Episode {
         return self.seasons[index.section].episodes[index.row]
+    }
+    
+    private func showIndicatorView(_ display: Bool = true) {
+        DispatchQueue.main.async {
+            self.onShouldDisplayIndicator?(display)
+        }
     }
 }
