@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B58F7D7284B5485007C4E22 /* IndicatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B58F7D6284B5485007C4E22 /* IndicatorCollectionViewCell.swift */; };
+		3B58F7D9284B5B0F007C4E22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B58F7D8284B5B0F007C4E22 /* Extensions.swift */; };
 		3B779CE72849F965004CC9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779CE62849F965004CC9CA /* AppDelegate.swift */; };
 		3B779CE92849F965004CC9CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779CE82849F965004CC9CA /* SceneDelegate.swift */; };
 		3B779CEB2849F965004CC9CA /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B779CEA2849F965004CC9CA /* CharacterListViewController.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		3B58F7D6284B5485007C4E22 /* IndicatorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorCollectionViewCell.swift; sourceTree = "<group>"; };
+		3B58F7D8284B5B0F007C4E22 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3B779CE32849F965004CC9CA /* Ricky+Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ricky+Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B779CE62849F965004CC9CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B779CE82849F965004CC9CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				3B779CEF2849F969004CC9CA /* Assets.xcassets */,
 				3B779CF12849F969004CC9CA /* LaunchScreen.storyboard */,
 				3B779CF42849F969004CC9CA /* Info.plist */,
+				3B58F7D8284B5B0F007C4E22 /* Extensions.swift */,
 			);
 			path = "Ricky+Morty";
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				3B779CFC2849FB49004CC9CA /* Coordinator.swift in Sources */,
 				3B779CE72849F965004CC9CA /* AppDelegate.swift in Sources */,
 				3B779D27284AB6D5004CC9CA /* EpisodeTableViewCell.swift in Sources */,
+				3B58F7D9284B5B0F007C4E22 /* Extensions.swift in Sources */,
 				3B779D0A284A03DE004CC9CA /* CharacterResponse.swift in Sources */,
 				3B779D22284A6317004CC9CA /* EpisodesViewModel.swift in Sources */,
 				3B779D0E284A0FC2004CC9CA /* CharacterListViewModel.swift in Sources */,

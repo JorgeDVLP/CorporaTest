@@ -33,6 +33,8 @@ final class CharacterListViewModel {
     
     var onDataAdded: (([IndexPath]) -> Void)?
     
+    var onShouldDisplayIndicator: ((Bool) -> Void)?
+    
     init(characterService: CharacterService = APIManager.shared) {
         self.characterService = characterService
     }
@@ -76,14 +78,22 @@ final class CharacterListViewModel {
     
     private func fetchCharacters(completion: @escaping ([Character]) -> Void) {
         self.isFetching = true
+        self.showIndicatorView()
         self.characterService.getCharacters(page: currentPage, status: statusValue) { [weak self] result in
             self?.isFetching = false
+            self?.showIndicatorView(false)
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let characters):
                 completion(characters)
             }
+        }
+    }
+    
+    private func showIndicatorView(_ display: Bool = true) {
+        DispatchQueue.main.async {
+            self.onShouldDisplayIndicator?(display)
         }
     }
     

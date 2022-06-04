@@ -20,7 +20,7 @@ class CharacterListViewController: UIViewController, StoryBoarded {
         self.title = "Characters"
         configureCollectionView()
         bindView()
-        self.viewModel.fetchData()
+        fetchData()
     }
     
     private func configureCollectionView() {
@@ -45,6 +45,14 @@ class CharacterListViewController: UIViewController, StoryBoarded {
                 self?.collectionView.insertItems(at: rows)
             }
         }
+        
+        self.viewModel.onShouldDisplayIndicator = { [weak self] display in
+            display == true ? self?.showActivityIndicator() : self?.removeActivityIndicator()
+        }
+    }
+    
+    private func fetchData() {
+        self.viewModel.fetchData()
     }
     
     @IBAction func onFilterChanged() {
