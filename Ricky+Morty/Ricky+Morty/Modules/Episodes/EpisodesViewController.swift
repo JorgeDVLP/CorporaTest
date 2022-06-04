@@ -63,6 +63,7 @@ extension EpisodesViewController: UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeTableViewCell.reuseIdentifier, for: indexPath) as? EpisodeTableViewCell else {
             return UITableViewCell()
         }
+        // Logic is too simple so we don't need to move to an external class
         let item = self.viewModel.getItem(forIndex: indexPath)
         cell.title.text = item.name
         cell.date.text = item.localizedDate
