@@ -43,12 +43,12 @@ final class CharacterListViewModel {
     
     private func fetchCharacters(completion: @escaping ([Character]) -> Void) {
         self.isFetching = true
-        self.showIndicatorView()
-        self.characterService.getCharacters(page: currentPage, status: statusValue) { [weak self] result in
+        self.characterService.getCharacters(page: self.currentPage, status: self.statusValue) { [weak self] result in
             self?.isFetching = false
-            self?.showIndicatorView(false)
+            
             switch result {
             case .failure(let error):
+                completion([])
                 print(error.localizedDescription)
                 self?.showError(error.localizedDescription)
             case .success(let characters):
@@ -71,8 +71,10 @@ final class CharacterListViewModel {
     
     func fetchData() {
         self.currentPage = 1
+        self.showIndicatorView()
         fetchCharacters { [weak self] items in
             guard let self = self else { return }
+            self.showIndicatorView(false)
             DispatchQueue.main.async {
                 self.characters = items.sorted(by: { $0.id < $1.id })
                 self.onDataFetched?(items.count)

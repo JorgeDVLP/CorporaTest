@@ -42,6 +42,7 @@ class CharacterListViewController: UIViewController, StoryBoarded {
         configureCollectionView()
         bindView()
         configureBackgroundView()
+        hideBackgroundView()
         self.viewModel.fetchData()
     }
     
@@ -73,7 +74,7 @@ class CharacterListViewController: UIViewController, StoryBoarded {
         stackView.isHidden = false
     }
     
-    private func removeBackgroundView() {
+    private func hideBackgroundView() {
         stackView.isHidden = true
     }
     
@@ -81,7 +82,7 @@ class CharacterListViewController: UIViewController, StoryBoarded {
         self.viewModel.onDataFetched = { [weak self] count in
             self?.collectionView.reloadData()
             if count > 0 {
-                self?.removeBackgroundView()
+                self?.hideBackgroundView()
                 self?.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             } else {
                 self?.showBackgroundView()
@@ -130,7 +131,6 @@ extension CharacterListViewController: UICollectionViewDataSource {
         if indexPath.row == count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IndicatorCollectionViewCell.reuseIdentifier, for: indexPath) as! IndicatorCollectionViewCell
             cell.inidicator.startAnimating()
-            
             return cell
         }
         
@@ -176,17 +176,18 @@ extension CharacterListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = self.viewModel.getItem(forIndex: indexPath)
-        print("Selected item", item)
         self.eventDelegate?.onCharacterSelected(item)
     }
 }
 
 extension CharacterListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let minSize = 185.0
         let count = self.viewModel.numberOfItems(forSection: indexPath.section)
         let indicatorCellSize = collectionView.frame.size
-        let characterCellWidth = (view.frame.width - 16) / 2
-        let size: CGSize = count == indexPath.row ? CGSize(width: indicatorCellSize.width, height: 180) : CGSize(width: characterCellWidth, height: 220)
+        let fourCellWidth = (view.frame.width - 32) / 4
+        let characterCellWidth = fourCellWidth < minSize ? minSize : fourCellWidth
+        let size: CGSize = count == indexPath.row ? CGSize(width: indicatorCellSize.width, height: 180) : CGSize(width: characterCellWidth, height: 240)
         return size
     }
 }
