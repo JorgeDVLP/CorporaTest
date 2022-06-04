@@ -134,32 +134,11 @@ extension CharacterListViewController: UICollectionViewDataSource {
             return cell
         }
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier, for: indexPath) as? CharacterCollectionViewCell else {
-            return UICollectionViewCell()
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier, for: indexPath)
         
         let item = viewModel.getItem(forIndex: indexPath)
-        cell.nameLabel.text = item.name
-        cell.statusLabel.text = item.status.rawValue
-        cell.originLabel.text = item.origin
         
-        switch item.status {
-        case .alive:
-            cell.statusLabel.textColor = UIColor(named: "GreenColor")
-        case .dead:
-            cell.statusLabel.textColor = UIColor(named: "RedColor")
-        case .unknown:
-            cell.statusLabel.textColor = UIColor(named: "UnknownColor")
-        }
-        
-        let representableID = item.id
-        cell.representableID = representableID
-        
-        ImageCache.loadImage(urlString: item.imageURL) { image in
-            if cell.representableID == representableID {
-                cell.image.image = image
-            }
-        }
+        CellDrawer(strattegy: CharacterStrattegy()).draw(cell, model: item)
         
         return cell
     }
