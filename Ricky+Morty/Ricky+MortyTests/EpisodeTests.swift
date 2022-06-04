@@ -106,68 +106,42 @@ class EpisodeTests: XCTestCase {
     // This method will test that display indicator is called twice during a fetch, one for true and other for false
     func testShowIndicator() {
         let expectation = expectation(description: "test")
-
-        let mockedView = MockedView(viewModel: viewModel)
-        mockedView.bindView()
+        
         characterService.result = .success(defaultEpisode)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            XCTAssertTrue(mockedView.showIndicatorCount == 2)
-            XCTAssertTrue(mockedView.atleastOneTrue)
-            expectation.fulfill()
+        var count: Int = 0
+        viewModel.onShouldDisplayIndicator = { show in
+            count += 1
         }
         
         viewModel.fetchData()
         
-        waitForExpectations(timeout: 1.5)
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            XCTAssertEqual(count, 2)
+            expectation.fulfill()
         }
-    }
-
-}
-
-class CustomCharacterService: CharacterService {
-    
-    var result: Result<Episode, APIError>?
-    var episodes: [Episode] = []
-    
-    func getCharacters(page: Int, status: String?, completion: @escaping (Result<[Character], APIError>) -> Void) {
         
+        waitForExpectations(timeout: 1)
     }
     
-    func getEpisode(url: String, completion: @escaping (Result<Episode, APIError>) -> Void) {
-        if let result = result {
-            completion(result)
-        } else {
-            completion(.success(episodes.removeFirst()))
+    class CustomCharacterService: CharacterService {
+        
+        var result: Result<Episode, APIError>?
+        var episodes: [Episode] = []
+        
+        func getCharacters(page: Int, status: String?, completion: @escaping (Result<[Character], APIError>) -> Void) {
+            
         }
-    }
-}
-
-class MockedView {
-    let viewModel: EpisodesViewModel
-    var showIndicatorCount: Int = 0
-    var atleastOneTrue: Bool = false
-    
-    init(viewModel: EpisodesViewModel) {
-        self.viewModel = viewModel
-    }
-    
-    func increaseIndicator() {
-        showIndicatorCount += 1
-    }
-    
-    func bindView() {
-        viewModel.onShouldDisplayIndicator = { [weak self] show in
-            self?.increaseIndicator()
-            if show == true {
-                self?.atleastOneTrue = true
+        
+        func getEpisode(url: String, completion: @escaping (Result<Episode, APIError>) -> Void) {
+            if let result = result {
+                completion(result)
+            } else {
+                completion(.success(episodes.removeFirst()))
             }
         }
     }
 }
+
+
+
