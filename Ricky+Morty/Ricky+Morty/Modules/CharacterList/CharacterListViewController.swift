@@ -42,7 +42,7 @@ class CharacterListViewController: UIViewController, StoryBoarded {
         configureCollectionView()
         bindView()
         configureBackgroundView()
-        fetchData()
+        self.viewModel.fetchData()
     }
     
     private func configureCollectionView() {
@@ -97,10 +97,16 @@ class CharacterListViewController: UIViewController, StoryBoarded {
         self.viewModel.onShouldDisplayIndicator = { [weak self] display in
             display == true ? self?.showActivityIndicator() : self?.removeActivityIndicator()
         }
+        
+        self.viewModel.onError = { [weak self] message in
+            self?.showErrorAlert(message)
+        }
     }
     
-    private func fetchData() {
-        self.viewModel.fetchData()
+    private func showErrorAlert(_ message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close", style: .default))
+        present(alert, animated: true)
     }
     
     @IBAction func onFilterChanged() {

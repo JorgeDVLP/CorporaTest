@@ -25,6 +25,7 @@ final class EpisodesViewModel {
     private let dispatchGroup: DispatchGroup = DispatchGroup()
     private var episodes: [Episode] = []
     private var seasons: [Season] = []
+    private var hasAnyError: Bool = false
     
     var title: String {
         return character.name
@@ -34,29 +35,11 @@ final class EpisodesViewModel {
     
     var onShouldDisplayIndicator: ((Bool) -> Void)?
     
+    var onError: ((_ message: String) -> Void)?
+    
     init(characterService: CharacterService = APIManager.shared, character: Character) {
         self.characterService = characterService
         self.character = character
-    }
-    
-    func fetchData() {
-        self.episodes.removeAll()
-        
-        showIndicatorView()
-        
-        for url in character.episodes {
-            fetchEpisode(url: url)
-        }
-        
-        dispatchGroup.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            self.showIndicatorView(false)
-            print("All episodes fetched", self.episodes.count)
-            self.episodes = self.episodes.sorted(by: { $0.episode < $1.episode })
-            self.seasons = self.mapToSeasons(self.episodes)
-            print("Number of seasons", self.seasons.count)
-            self.onDataFetched?()
-        }
     }
     
     private func mapToSeasons(_ list: [Episode]) -> [Season] {
@@ -79,10 +62,41 @@ final class EpisodesViewModel {
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
+                self.hasAnyError = true
             case .success(let episode):
                 self.episodes.append(episode)
             }
             self.dispatchGroup.leave()
+        }
+    }
+    
+    private func showIndicatorView(_ display: Bool = true) {
+        DispatchQueue.main.async {
+            self.onShouldDisplayIndicator?(display)
+        }
+    }
+    
+    func fetchData() {
+        self.episodes.removeAll()
+        
+        showIndicatorView()
+        
+        for url in character.episodes {
+            fetchEpisode(url: url)
+        }
+        
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            self.showIndicatorView(false)
+            print("All episodes fetched", self.episodes.count)
+            self.episodes = self.episodes.sorted(by: { $0.episode < $1.episode })
+            self.seasons = self.mapToSeasons(self.episodes)
+            print("Number of seasons", self.seasons.count)
+            self.onDataFetched?()
+            
+            if self.hasAnyError {
+                self.onError?("Error trying fetching episodes")
+            }
         }
     }
     
@@ -100,11 +114,5 @@ final class EpisodesViewModel {
     
     func getItem(forIndex index: IndexPath) -> Episode {
         return self.seasons[index.section].episodes[index.row]
-    }
-    
-    private func showIndicatorView(_ display: Bool = true) {
-        DispatchQueue.main.async {
-            self.onShouldDisplayIndicator?(display)
-        }
     }
 }

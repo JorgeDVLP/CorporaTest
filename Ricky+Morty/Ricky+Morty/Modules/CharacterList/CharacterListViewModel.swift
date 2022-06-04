@@ -35,8 +35,38 @@ final class CharacterListViewModel {
     
     var onShouldDisplayIndicator: ((Bool) -> Void)?
     
+    var onError: ((_ message: String) -> Void)?
+    
     init(characterService: CharacterService = APIManager.shared) {
         self.characterService = characterService
+    }
+    
+    private func fetchCharacters(completion: @escaping ([Character]) -> Void) {
+        self.isFetching = true
+        self.showIndicatorView()
+        self.characterService.getCharacters(page: currentPage, status: statusValue) { [weak self] result in
+            self?.isFetching = false
+            self?.showIndicatorView(false)
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+                self?.showError(error.localizedDescription)
+            case .success(let characters):
+                completion(characters)
+            }
+        }
+    }
+    
+    private func showIndicatorView(_ display: Bool = true) {
+        DispatchQueue.main.async {
+            self.onShouldDisplayIndicator?(display)
+        }
+    }
+    
+    private func showError(_ message: String) {
+        DispatchQueue.main.async {
+            self.onError?(message)
+        }
     }
     
     func fetchData() {
@@ -74,28 +104,6 @@ final class CharacterListViewModel {
             currentFilter = .all
         }
         fetchData()
-    }
-    
-    private func fetchCharacters(completion: @escaping ([Character]) -> Void) {
-        self.isFetching = true
-        self.showIndicatorView()
-        self.characterService.getCharacters(page: currentPage, status: statusValue) { [weak self] result in
-            self?.isFetching = false
-            self?.showIndicatorView(false)
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion([])
-            case .success(let characters):
-                completion(characters)
-            }
-        }
-    }
-    
-    private func showIndicatorView(_ display: Bool = true) {
-        DispatchQueue.main.async {
-            self.onShouldDisplayIndicator?(display)
-        }
     }
     
     func fetchNextPage() {
